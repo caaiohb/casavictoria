@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-verde-950: #0f2119;
+  --color-verde-900: #16301f;
+  --color-verde-800: #1c3b2e;
+  --color-verde-700: #274c3c;
+  --color-champagne-50: #fdfbf6;
+  --color-champagne-100: #f7f1e3;
+  --color-champagne-200: #eee2c6;
+  --color-branco: #faf8f3;
+  --color-dourado: #a9895e;
+  --color-dourado-light: #c7ab7f;
+  --color-tinta: #17201b;
+
+  --font-display: "Fraunces", serif;
+  --font-body: "Manrope", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-branco);
+  color: var(--color-tinta);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: var(--color-dourado);
+  color: var(--color-branco);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* thin gold measuring rule used as structural signature */
+.blueprint-rule {
+  position: relative;
+}
+.blueprint-rule::before,
+.blueprint-rule::after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 8px;
+  background: var(--color-dourado);
+  top: 50%;
+  transform: translateY(-50%);
+}
+.blueprint-rule::before { left: 0; }
+.blueprint-rule::after { right: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
