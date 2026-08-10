@@ -30,10 +30,10 @@ export default function Payment() {
           >
             <div>
               <p className="text-xs tracking-[0.2em] uppercase text-champagne-100/50 mb-3">Valor atual</p>
-              <p className="font-display text-4xl md:text-5xl text-champagne-50 mb-8">R$ 2.500.000</p>
+              <p className="font-display text-3xl sm:text-4xl md:text-5xl text-champagne-50 mb-8 whitespace-nowrap">R$ 2.500.000</p>
 
               <p className="text-xs tracking-[0.2em] uppercase text-champagne-100/50 mb-3">Valor projetado na entrega</p>
-              <p className="font-display text-2xl md:text-3xl text-dourado-light">R$ 2.700.000 – R$ 2.800.000</p>
+              <p className="font-display text-xl sm:text-2xl md:text-3xl text-dourado-light">R$ 2.700.000 – R$ 2.800.000</p>
             </div>
           </motion.div>
 
@@ -46,13 +46,13 @@ export default function Payment() {
           >
             <div>
               <p className="text-xs tracking-[0.2em] uppercase text-verde-900/50 mb-3">Condições de pagamento</p>
-              <div className="grid grid-cols-2 gap-6 mb-8">
+              <div className="grid grid-cols-2 gap-4 sm:gap-6 mb-8">
                 <div>
-                  <p className="font-display text-3xl">R$ 1.000.000</p>
+                  <p className="font-display text-xl sm:text-2xl md:text-3xl whitespace-nowrap">R$ 1.000.000</p>
                   <p className="text-xs text-verde-900/50 mt-1">Entrada</p>
                 </div>
                 <div>
-                  <p className="font-display text-3xl">R$ 1.500.000</p>
+                  <p className="font-display text-xl sm:text-2xl md:text-3xl whitespace-nowrap">R$ 1.500.000</p>
                   <p className="text-xs text-verde-900/50 mt-1">Saldo</p>
                 </div>
               </div>

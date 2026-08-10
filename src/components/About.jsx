@@ -30,12 +30,12 @@ export default function About() {
               experiência única de viver.
             </p>
 
-            <div className="grid grid-cols-4 gap-4 mt-12 pt-10 border-t border-verde-900/10">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-6 mt-12 pt-10 border-t border-verde-900/10">
               {stats.map((s) => (
                 <div key={s.label}>
-                  <p className="font-display text-3xl md:text-4xl text-verde-900">
+                  <p className="font-display text-2xl sm:text-3xl md:text-4xl text-verde-900 whitespace-nowrap">
                     {s.value}
-                    <span className="text-lg text-dourado">{s.unit}</span>
+                    <span className="text-base sm:text-lg text-dourado">{s.unit}</span>
                   </p>
                   <p className="text-xs text-tinta/50 mt-1 leading-snug">{s.label}</p>
                 </div>

@@ -72,7 +72,8 @@ export default function FloorPlan() {
           </figure>
         </div>
         <p className="text-xs text-champagne-100/40 mb-10 italic text-center">
-          As imagens exibidas são referentes ao projeto desenvolvido para a Casa Victória.
+          As imagens exibidas são referentes ao projeto desenvolvido para a Casa Victória. Móveis,
+          eletrodomésticos e itens de decoração são meramente ilustrativos.
         </p>
 
         <motion.div

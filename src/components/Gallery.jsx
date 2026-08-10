@@ -46,7 +46,8 @@ export default function Gallery() {
         </div>
 
         <p className="text-xs text-tinta/40 mb-8 italic">
-          As imagens exibidas são referentes ao projeto desenvolvido para a Casa Victória.
+          As imagens exibidas são referentes ao projeto desenvolvido para a Casa Victória. Móveis,
+          eletrodomésticos e itens de decoração são meramente ilustrativos.
         </p>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 lg:auto-rows-[220px] gap-3">

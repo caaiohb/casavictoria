@@ -18,7 +18,7 @@ const FEATURES = [
   { icon: HiOutlineCpuChip, label: 'Casa inteligente', desc: 'Preparada para automação residencial.' },
   { icon: HiOutlineSun, label: 'Aquecimento solar', desc: 'Água aquecida por energia solar.' },
   { icon: HiOutlineBoltSlash, label: 'Energia fotovoltaica', desc: 'Eficiência e economia todos os dias.' },
-  { icon: HiOutlineCloud, label: 'Preparada para ar-condicionado', desc: 'Infraestrutura pronta para instalação em todos os ambientes.' },
+  { icon: HiOutlineCloud, label: 'Preparada para ar-condicionado', desc: 'Infraestrutura pronta para instalação.' },
   { icon: HiOutlineTv, label: 'Sala de estar e TV', desc: 'Ambiente amplo para o convívio.' },
   { icon: HiOutlineCake, label: 'Cozinha integrada', desc: 'Aberta à sala de jantar.' },
   { icon: HiOutlineFire, label: 'Espaço gourmet', desc: 'Feito para receber com estilo.' },

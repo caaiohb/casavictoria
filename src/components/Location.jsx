@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { HiOutlineMapPin } from 'react-icons/hi2'
 
 const DISTANCES = [
-  { place: 'Rodoanel Mário Covas', time: '4 min' },
+  { place: 'Rodovia Presidente Dutra', time: '4 min' },
   { place: 'Aeroporto Internacional de Guarulhos', time: '40 min' },
   { place: 'São José dos Campos', time: '37 min' },
   { place: 'São Paulo — Capital', time: '1h' },

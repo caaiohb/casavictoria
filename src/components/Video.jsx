@@ -11,9 +11,9 @@ export default function Video() {
           transition={{ duration: 0.7 }}
           className="text-center max-w-2xl mx-auto mb-14"
         >
-          <p className="text-xs tracking-[0.25em] uppercase text-dourado-light mb-4">Tour em vídeo</p>
+          <p className="text-xs tracking-[0.25em] uppercase text-dourado-light mb-4">Atualização da obra</p>
           <h2 className="font-display text-4xl md:text-5xl text-champagne-50">
-            Conheça a Casa Victória em movimento
+            Acompanhe a evolução da Casa Victória
           </h2>
         </motion.div>
 
@@ -26,13 +26,14 @@ export default function Video() {
         >
           <iframe
             className="h-full w-full"
-            src="https://www.youtube.com/embed/2jxGNj2V_Qg"
-            title="Tour em vídeo da Casa Victória"
+            src="https://www.youtube.com/embed/jQoenxDotJM"
+            title="Atualização da obra — Casa Victória"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
           />
         </motion.div>
+        <p className="text-center text-xs text-champagne-100/50 mt-4 tracking-wide">10 de agosto de 2026</p>
       </div>
     </section>
   )
