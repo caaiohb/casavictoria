@@ -1,4 +1,16 @@
-import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
+import { HiOutlineX, HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi'
+
+const PHOTOS = [
+  '/images/obra/obra-01.jpg',
+  '/images/obra/obra-02.jpg',
+  '/images/obra/obra-03.jpg',
+  '/images/obra/obra-04.jpg',
+  '/images/obra/obra-05.jpg',
+  '/images/obra/obra-06.jpg',
+  '/images/obra/obra-07.jpg',
+]
 
 const VIDEOS = [
   {
@@ -12,6 +24,23 @@ const VIDEOS = [
 ]
 
 export default function Video() {
+  const [index, setIndex] = useState(null)
+
+  const close = () => setIndex(null)
+  const prev = () => setIndex((i) => (i - 1 + PHOTOS.length) % PHOTOS.length)
+  const next = () => setIndex((i) => (i + 1) % PHOTOS.length)
+
+  useEffect(() => {
+    if (index === null) return
+    const onKey = (e) => {
+      if (e.key === 'Escape') close()
+      if (e.key === 'ArrowLeft') prev()
+      if (e.key === 'ArrowRight') next()
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [index])
+
   return (
     <section className="bg-verde-950 py-24 md:py-32">
       <div className="max-w-5xl mx-auto px-6 md:px-10">
@@ -27,6 +56,29 @@ export default function Video() {
             Acompanhe a evolução da Casa Victória
           </h2>
         </motion.div>
+
+        <p className="text-center text-xs text-champagne-100/40 mb-6 tracking-wide">
+          Fotos do canteiro de obras — 10 de agosto de 2026
+        </p>
+        <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 mb-16">
+          {PHOTOS.map((src, i) => (
+            <motion.button
+              key={src}
+              onClick={() => setIndex(i)}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.5, delay: i * 0.06 }}
+              className={`overflow-hidden group ${i === 0 ? 'col-span-2 row-span-2' : ''}`}
+            >
+              <img
+                src={src}
+                alt={`Obra da Casa Victória — 10 de agosto de 2026, foto ${i + 1}`}
+                className="h-full w-full object-cover aspect-square transition-transform duration-700 group-hover:scale-110"
+              />
+            </motion.button>
+          ))}
+        </div>
 
         <div className="grid sm:grid-cols-2 gap-8 max-w-3xl mx-auto sm:max-w-none">
           {VIDEOS.map((video, i) => (
@@ -53,6 +105,50 @@ export default function Video() {
           ))}
         </div>
       </div>
+
+      <AnimatePresence>
+        {index !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] bg-verde-950/97 flex items-center justify-center p-4 md:p-10"
+            onClick={close}
+          >
+            <button
+              onClick={close}
+              className="absolute top-6 right-6 text-champagne-50 text-3xl hover:text-dourado-light transition-colors"
+              aria-label="Fechar"
+            >
+              <HiOutlineX />
+            </button>
+            <button
+              onClick={(e) => { e.stopPropagation(); prev() }}
+              className="absolute left-3 md:left-8 text-champagne-50 text-3xl hover:text-dourado-light transition-colors"
+              aria-label="Foto anterior"
+            >
+              <HiOutlineChevronLeft />
+            </button>
+            <motion.img
+              key={PHOTOS[index]}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35 }}
+              src={PHOTOS[index]}
+              alt="Obra da Casa Victória"
+              className="max-w-4xl w-full max-h-[80vh] object-contain mx-auto"
+              onClick={(e) => e.stopPropagation()}
+            />
+            <button
+              onClick={(e) => { e.stopPropagation(); next() }}
+              className="absolute right-3 md:right-8 text-champagne-50 text-3xl hover:text-dourado-light transition-colors"
+              aria-label="Próxima foto"
+            >
+              <HiOutlineChevronRight />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   )
 }
