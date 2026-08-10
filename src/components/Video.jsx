@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 const VIDEOS = [
   {
     src: 'https://www.youtube.com/embed/2jxGNj2V_Qg',
-    label: 'Tour completo da residência',
+    label: 'Imagens aéreas da construção — 27 de julho de 2026',
   },
   {
     src: 'https://www.youtube.com/embed/jQoenxDotJM',
