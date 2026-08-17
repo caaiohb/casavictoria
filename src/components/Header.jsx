@@ -49,7 +49,7 @@ export default function Header() {
 
         <div className="hidden lg:block">
           <a
-            href={whatsappLink('Olá, gostaria de agendar uma visita à Casa Victória.')}
+            href={whatsappLink('Olá! Vi o anúncio da Casa Victória (Condomínio Entre Serras, Santa Isabel/SP — 250m², 4 suítes, piscina privativa) e gostaria de agendar uma visita.')}
             target="_blank"
             rel="noopener noreferrer"
             className="border border-dourado-light/70 text-champagne-100 text-sm tracking-wide px-5 py-2.5 hover:bg-dourado-light hover:text-verde-950 transition-colors duration-300"
@@ -88,7 +88,7 @@ export default function Header() {
                 </a>
               ))}
               <a
-                href={whatsappLink('Olá, gostaria de agendar uma visita à Casa Victória.')}
+                href={whatsappLink('Olá! Vi o anúncio da Casa Victória (Condomínio Entre Serras, Santa Isabel/SP — 250m², 4 suítes, piscina privativa) e gostaria de agendar uma visita.')}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-4 text-center border border-dourado-light text-champagne-100 py-3 text-sm tracking-wide"

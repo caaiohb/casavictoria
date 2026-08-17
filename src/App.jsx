@@ -14,10 +14,11 @@ import Location from './components/Location'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import WhatsAppFloat from './components/WhatsAppFloat'
+import MobileStickyCTA from './components/MobileStickyCTA'
 
 function App() {
   return (
-    <div className="bg-branco">
+    <div className="bg-branco pb-14 sm:pb-0">
       <Header />
       <main>
         <Hero />
@@ -36,6 +37,7 @@ function App() {
       </main>
       <Footer />
       <WhatsAppFloat />
+      <MobileStickyCTA />
     </div>
   )
 }
