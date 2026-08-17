@@ -76,6 +76,13 @@ export default function Hero() {
           >
             Agendar visita
           </a>
+          <a
+            href="#sobre"
+            className="flex items-center gap-2 px-4 py-4 text-sm tracking-wide text-champagne-100/80 hover:text-dourado-light transition-colors duration-300"
+          >
+            Saiba mais
+            <span aria-hidden="true">↓</span>
+          </a>
         </motion.div>
       </div>
 
