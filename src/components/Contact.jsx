@@ -1,8 +1,9 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { whatsappLink, WHATSAPP_NUMBER } from '../lib/whatsapp'
 
 export default function Contact() {
+  const [confirmedRead, setConfirmedRead] = useState(false)
   const [form, setForm] = useState({ nome: '', telefone: '', mensagem: '' })
   const [sent, setSent] = useState(false)
 
@@ -65,64 +66,104 @@ export default function Contact() {
             <span className="text-dourado-light/40">·</span>
             <span>R$ 2.500.000</span>
           </div>
-
-          <a
-            href={whatsappLink()}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block mt-8 bg-dourado-light text-verde-950 px-10 py-4 text-sm tracking-wide font-medium hover:bg-champagne-50 transition-colors"
-          >
-            Solicitar informações
-          </a>
         </motion.div>
 
-        <motion.form
-          onSubmit={handleSubmit}
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.7, delay: 0.15 }}
-          className="max-w-xl mx-auto grid gap-4 border border-champagne-100/15 p-8 md:p-10"
-        >
-          <p className="text-xs tracking-[0.2em] uppercase text-champagne-100/50 mb-2">
-            Prefere que entremos em contato?
-          </p>
-          <input
-            required
-            name="nome"
-            value={form.nome}
-            onChange={handleChange}
-            placeholder="Seu nome"
-            className="bg-transparent border border-champagne-100/25 px-4 py-3 text-sm placeholder:text-champagne-100/40 focus:outline-none focus:border-dourado-light"
-          />
-          <input
-            required
-            name="telefone"
-            value={form.telefone}
-            onChange={handleChange}
-            placeholder="Telefone / WhatsApp"
-            className="bg-transparent border border-champagne-100/25 px-4 py-3 text-sm placeholder:text-champagne-100/40 focus:outline-none focus:border-dourado-light"
-          />
-          <textarea
-            name="mensagem"
-            value={form.mensagem}
-            onChange={handleChange}
-            placeholder="Mensagem (opcional)"
-            rows={3}
-            className="bg-transparent border border-champagne-100/25 px-4 py-3 text-sm placeholder:text-champagne-100/40 focus:outline-none focus:border-dourado-light resize-none"
-          />
-          <button
-            type="submit"
-            className="mt-2 border border-dourado-light text-champagne-50 py-3.5 text-sm tracking-wide hover:bg-dourado-light hover:text-verde-950 transition-colors"
-          >
-            Enviar e abrir WhatsApp
-          </button>
-          {sent && (
-            <p className="text-xs text-dourado-light text-center">
-              Pronto! Abrimos o WhatsApp ({WHATSAPP_NUMBER}) com sua mensagem.
-            </p>
+        <AnimatePresence mode="wait">
+          {!confirmedRead ? (
+            <motion.div
+              key="gate"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -16 }}
+              transition={{ duration: 0.4 }}
+              className="max-w-lg mx-auto border border-champagne-100/15 p-8 md:p-10 text-center"
+            >
+              <p className="font-display text-xl md:text-2xl mb-8">
+                Você já conheceu as informações da Casa Victória nesta página?
+              </p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <a
+                  href="#topo"
+                  className="border border-champagne-100/40 text-champagne-100/85 px-8 py-3.5 text-sm tracking-wide hover:border-dourado-light hover:text-dourado-light transition-colors"
+                >
+                  Ainda não, quero ver
+                </a>
+                <button
+                  type="button"
+                  onClick={() => setConfirmedRead(true)}
+                  className="bg-dourado-light text-verde-950 px-8 py-3.5 text-sm tracking-wide font-medium hover:bg-champagne-50 transition-colors"
+                >
+                  Sim, quero entrar em contato
+                </button>
+              </div>
+            </motion.div>
+          ) : (
+            <motion.div
+              key="contact-area"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+            >
+              <div className="text-center mb-10">
+                <a
+                  href={whatsappLink()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-dourado-light text-verde-950 px-10 py-4 text-sm tracking-wide font-medium hover:bg-champagne-50 transition-colors"
+                >
+                  Solicitar informações
+                </a>
+              </div>
+
+              <form
+                onSubmit={handleSubmit}
+                className="max-w-xl mx-auto grid gap-4 border border-champagne-100/15 p-8 md:p-10"
+              >
+                <p className="text-xs tracking-[0.2em] uppercase text-champagne-100/50 mb-2">
+                  Prefere deixar seus dados?
+                </p>
+                <p className="text-xs text-champagne-100/40 mb-2 normal-case tracking-normal">
+                  Preenchemos sua mensagem automaticamente para você enviar pelo WhatsApp.
+                </p>
+                <input
+                  required
+                  name="nome"
+                  value={form.nome}
+                  onChange={handleChange}
+                  placeholder="Seu nome"
+                  className="bg-transparent border border-champagne-100/25 px-4 py-3 text-sm placeholder:text-champagne-100/40 focus:outline-none focus:border-dourado-light"
+                />
+                <input
+                  required
+                  name="telefone"
+                  value={form.telefone}
+                  onChange={handleChange}
+                  placeholder="Telefone / WhatsApp"
+                  className="bg-transparent border border-champagne-100/25 px-4 py-3 text-sm placeholder:text-champagne-100/40 focus:outline-none focus:border-dourado-light"
+                />
+                <textarea
+                  name="mensagem"
+                  value={form.mensagem}
+                  onChange={handleChange}
+                  placeholder="Mensagem (opcional)"
+                  rows={3}
+                  className="bg-transparent border border-champagne-100/25 px-4 py-3 text-sm placeholder:text-champagne-100/40 focus:outline-none focus:border-dourado-light resize-none"
+                />
+                <button
+                  type="submit"
+                  className="mt-2 border border-dourado-light text-champagne-50 py-3.5 text-sm tracking-wide hover:bg-dourado-light hover:text-verde-950 transition-colors"
+                >
+                  Enviar e abrir WhatsApp
+                </button>
+                {sent && (
+                  <p className="text-xs text-dourado-light text-center">
+                    Pronto! Abrimos o WhatsApp ({WHATSAPP_NUMBER}) com sua mensagem.
+                  </p>
+                )}
+              </form>
+            </motion.div>
           )}
-        </motion.form>
+        </AnimatePresence>
       </div>
     </section>
   )
