@@ -10,6 +10,7 @@ const LINKS = [
   { href: '#planta', label: 'Planta' },
   { href: '#investimento', label: 'Investimento' },
   { href: '#localizacao', label: 'Localização' },
+  { href: '#faq', label: 'Dúvidas' },
 ]
 
 export default function Header() {

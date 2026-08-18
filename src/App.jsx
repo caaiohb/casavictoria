@@ -11,6 +11,7 @@ import BuyerSupport from './components/BuyerSupport'
 import Personalization from './components/Personalization'
 import Timeline from './components/Timeline'
 import Location from './components/Location'
+import FAQ from './components/FAQ'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import WhatsAppFloat from './components/WhatsAppFloat'
@@ -33,6 +34,7 @@ function App() {
         <Personalization />
         <Timeline />
         <Location />
+        <FAQ />
         <Contact />
       </main>
       <Footer />
