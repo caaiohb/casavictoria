@@ -53,11 +53,24 @@ export default function Contact() {
             Tenha a oportunidade de viver
             <br /> em uma residência <span className="italic text-dourado-light">única</span>.
           </h2>
+
+          <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 mt-10 text-sm text-champagne-100/70">
+            <span>250m² construídos</span>
+            <span className="text-dourado-light/40">·</span>
+            <span>4 suítes</span>
+            <span className="text-dourado-light/40">·</span>
+            <span>Piscina privativa</span>
+            <span className="text-dourado-light/40">·</span>
+            <span>Santa Isabel/SP</span>
+            <span className="text-dourado-light/40">·</span>
+            <span>R$ 2.500.000</span>
+          </div>
+
           <a
             href={whatsappLink()}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block mt-10 bg-dourado-light text-verde-950 px-10 py-4 text-sm tracking-wide font-medium hover:bg-champagne-50 transition-colors"
+            className="inline-block mt-8 bg-dourado-light text-verde-950 px-10 py-4 text-sm tracking-wide font-medium hover:bg-champagne-50 transition-colors"
           >
             Solicitar informações
           </a>
