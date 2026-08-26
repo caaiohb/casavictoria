@@ -76,7 +76,7 @@ export default function Timeline() {
             <p className="text-xs tracking-[0.2em] uppercase text-dourado-light mb-5 flex items-center gap-2">
               <HiOutlineCalendarDays /> Entrega prevista
             </p>
-            <p className="font-display text-2xl mb-1">Novembro de 2026</p>
+            <p className="font-display text-2xl mb-1">Dezembro de 2026</p>
             {days !== null && (
               <p className="text-xs text-champagne-100/50">
                 faltam aproximadamente <span className="text-dourado-light">{days}</span> dias

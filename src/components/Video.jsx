@@ -3,7 +3,10 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { HiOutlineX, HiOutlineChevronLeft, HiOutlineChevronRight, HiCheckCircle } from 'react-icons/hi'
 import { HiOutlineWrenchScrewdriver, HiOutlineCalendarDays } from 'react-icons/hi2'
 
-const PHOTOS = [
+const NEW_PHOTOS = Array.from({ length: 22 }, (_, i) =>
+  `/images/obra/obra-21-08-${String(i + 1).padStart(2, '0')}.jpg`
+)
+const OLDER_PHOTOS = [
   '/images/obra/obra-01.jpg',
   '/images/obra/obra-02.jpg',
   '/images/obra/obra-03.jpg',
@@ -12,6 +15,7 @@ const PHOTOS = [
   '/images/obra/obra-06.jpg',
   '/images/obra/obra-07.jpg',
 ]
+const PHOTOS = [...NEW_PHOTOS, ...OLDER_PHOTOS]
 
 const VIDEOS = [
   {
@@ -25,7 +29,8 @@ const VIDEOS = [
 ]
 
 const DONE = ['Estrutura concluída', 'Caixote finalizado', 'Duas lajes concretadas']
-const DELIVERY_DATE = new Date('2026-11-01T00:00:00')
+const DELIVERY_DATE = new Date('2026-12-01T00:00:00')
+const PROGRESS_PCT = 62
 
 function useCountdown(target) {
   const [days, setDays] = useState(null)
@@ -70,7 +75,7 @@ export default function Video() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.7 }}
-          className="text-center max-w-2xl mx-auto mb-14"
+          className="text-center max-w-2xl mx-auto mb-10"
         >
           <p className="text-xs tracking-[0.25em] uppercase text-dourado-light mb-4">Atualização da obra</p>
           <h2 className="font-display text-4xl md:text-5xl text-champagne-50">
@@ -78,7 +83,7 @@ export default function Video() {
           </h2>
         </motion.div>
 
-        <div className="grid sm:grid-cols-3 gap-3 mb-10">
+        <div className="grid sm:grid-cols-3 gap-3 mb-3">
           <div className="border border-champagne-100/15 p-4">
             <p className="text-[10px] tracking-[0.15em] uppercase text-dourado-light mb-2">Concluído</p>
             <ul className="space-y-1.5">
@@ -101,7 +106,7 @@ export default function Video() {
             <p className="text-[10px] tracking-[0.15em] uppercase text-dourado-light mb-1 flex items-center gap-1.5">
               <HiOutlineCalendarDays /> Entrega prevista
             </p>
-            <p className="font-display text-lg">Novembro de 2026</p>
+            <p className="font-display text-lg">Dezembro de 2026</p>
             {days !== null && (
               <p className="text-[10px] text-champagne-100/50">
                 faltam aproximadamente <span className="text-dourado-light">{days}</span> dias
@@ -110,28 +115,59 @@ export default function Video() {
           </div>
         </div>
 
-        <p className="text-center text-xs text-champagne-100/40 mb-6 tracking-wide">
-          Fotos do canteiro de obras — 10 de agosto de 2026
+        <div className="mb-10">
+          <div className="flex items-center justify-between mb-1.5">
+            <span className="text-[10px] tracking-[0.15em] uppercase text-dourado-light">Progresso da obra</span>
+            <span className="text-xs font-display text-champagne-50">{PROGRESS_PCT}% concluída</span>
+          </div>
+          <div className="h-1.5 w-full bg-champagne-100/10 overflow-hidden">
+            <div
+              className="h-full bg-dourado-light"
+              style={{ width: `${PROGRESS_PCT}%` }}
+            />
+          </div>
+        </div>
+
+        <p className="text-center text-xs text-champagne-100/40 mb-4 tracking-wide">
+          Fotos do canteiro de obras — 21 de agosto de 2026
         </p>
-        <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 mb-10">
-          {PHOTOS.map((src, i) => (
-            <motion.button
+        <div className="flex gap-2.5 overflow-x-auto pb-3 mb-10 snap-x snap-mandatory -mx-6 px-6 sm:mx-0 sm:px-0 [scrollbar-width:thin]">
+          {NEW_PHOTOS.map((src, i) => (
+            <button
               key={src}
               onClick={() => setIndex(i)}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.5, delay: i * 0.06 }}
-              className={`overflow-hidden group ${i === 0 ? 'col-span-2 row-span-2' : ''}`}
+              className="shrink-0 w-32 h-32 sm:w-40 sm:h-40 overflow-hidden snap-start group"
             >
               <img
                 src={src}
-                alt={`Obra da Casa Victória — 10 de agosto de 2026, foto ${i + 1}`}
-                className="h-full w-full object-cover aspect-square transition-transform duration-700 group-hover:scale-110"
+                alt={`Obra da Casa Victória — 21 de agosto de 2026, foto ${i + 1}`}
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
-            </motion.button>
+            </button>
           ))}
         </div>
+
+        <details className="mb-10 group">
+          <summary className="cursor-pointer text-center text-xs text-champagne-100/40 tracking-wide mb-4 list-none flex items-center justify-center gap-2">
+            <span>Ver fotos anteriores — 10 de agosto de 2026</span>
+            <span className="transition-transform group-open:rotate-180">▾</span>
+          </summary>
+          <div className="flex gap-2.5 overflow-x-auto pb-3 snap-x snap-mandatory -mx-6 px-6 sm:mx-0 sm:px-0">
+            {OLDER_PHOTOS.map((src, i) => (
+              <button
+                key={src}
+                onClick={() => setIndex(NEW_PHOTOS.length + i)}
+                className="shrink-0 w-32 h-32 sm:w-40 sm:h-40 overflow-hidden snap-start group"
+              >
+                <img
+                  src={src}
+                  alt={`Obra da Casa Victória — 10 de agosto de 2026, foto ${i + 1}`}
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+              </button>
+            ))}
+          </div>
+        </details>
 
         <div className="grid grid-cols-2 gap-5 max-w-xs sm:max-w-md mx-auto">
           {VIDEOS.map((video, i) => (

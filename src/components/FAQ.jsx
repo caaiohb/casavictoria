@@ -17,7 +17,7 @@ const FAQS = [
   },
   {
     q: 'Qual a data prevista de entrega?',
-    a: 'A entrega está prevista para novembro de 2026. A estrutura, o caixote e as duas lajes já estão concluídos — acompanhe a evolução na seção de Atualização da Obra.',
+    a: 'A entrega está prevista para dezembro de 2026. A obra está com 62% de conclusão — estrutura, caixote e duas lajes já finalizados. Acompanhe a evolução na seção de Atualização da Obra.',
   },
   {
     q: 'O incorporador ajuda com a documentação e o crédito?',
