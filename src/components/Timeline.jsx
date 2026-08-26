@@ -26,7 +26,7 @@ export default function Timeline() {
   const days = useCountdown(DELIVERY_DATE)
 
   return (
-    <section className="bg-champagne-50 py-24 md:py-32">
+    <section className="bg-champagne-50 py-14 md:py-20">
       <div className="max-w-5xl mx-auto px-6 md:px-10">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <p className="text-xs tracking-[0.25em] uppercase text-dourado mb-4">Status da obra</p>

@@ -10,7 +10,7 @@ const CONDITIONS = [
 
 export default function Payment() {
   return (
-    <section id="investimento" className="relative bg-verde-950 py-24 md:py-32 text-champagne-50">
+    <section id="investimento" className="relative bg-verde-950 py-14 md:py-20 text-champagne-50">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <p className="text-xs tracking-[0.25em] uppercase text-dourado-light mb-4">Investimento</p>

@@ -29,7 +29,7 @@ function BlueprintLine() {
 
 export default function FloorPlan() {
   return (
-    <section id="planta" className="bg-verde-900 py-24 md:py-32 text-champagne-50 overflow-hidden">
+    <section id="planta" className="bg-verde-900 py-14 md:py-20 text-champagne-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <p className="text-xs tracking-[0.25em] uppercase text-dourado-light mb-4">Planta e distribuição</p>

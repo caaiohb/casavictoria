@@ -29,7 +29,7 @@ const FEATURES = [
 
 export default function Features() {
   return (
-    <section id="diferenciais" className="bg-verde-950 py-24 md:py-32 relative overflow-hidden">
+    <section id="diferenciais" className="bg-verde-950 py-14 md:py-20 relative overflow-hidden">
       <div className="absolute inset-0 opacity-[0.04] bg-[radial-gradient(circle_at_1px_1px,#fff_1px,transparent_0)] bg-[length:28px_28px]" />
       <div className="max-w-7xl mx-auto px-6 md:px-10 relative">
         <div className="text-center max-w-2xl mx-auto mb-16">

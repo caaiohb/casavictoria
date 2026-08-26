@@ -12,7 +12,7 @@ const DISTANCES = [
 
 export default function Location() {
   return (
-    <section id="localizacao" className="bg-branco py-24 md:py-32">
+    <section id="localizacao" className="bg-branco py-14 md:py-20">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <div className="grid lg:grid-cols-12 gap-14 items-center mb-14">
           <motion.div

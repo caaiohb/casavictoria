@@ -11,7 +11,7 @@ const ITEMS = [
 
 export default function Technology() {
   return (
-    <section className="bg-branco py-24 md:py-32">
+    <section className="bg-branco py-14 md:py-20">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <div className="grid lg:grid-cols-12 gap-14 items-center">
           <div className="lg:col-span-5">

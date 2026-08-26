@@ -31,7 +31,7 @@ export default function Contact() {
   return (
     <section
       id="contato"
-      className="relative py-28 md:py-36 bg-verde-950 text-champagne-50 overflow-hidden"
+      className="relative py-16 md:py-24 bg-verde-950 text-champagne-50 overflow-hidden"
     >
       <div className="absolute inset-0">
         <img

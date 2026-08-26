@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { HiOutlineX, HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi'
+import { HiOutlineX, HiOutlineChevronLeft, HiOutlineChevronRight, HiCheckCircle } from 'react-icons/hi'
+import { HiOutlineWrenchScrewdriver, HiOutlineCalendarDays } from 'react-icons/hi2'
 
 const PHOTOS = [
   '/images/obra/obra-01.jpg',
@@ -23,8 +24,28 @@ const VIDEOS = [
   },
 ]
 
+const DONE = ['Estrutura concluída', 'Caixote finalizado', 'Duas lajes concretadas']
+const DELIVERY_DATE = new Date('2026-11-01T00:00:00')
+
+function useCountdown(target) {
+  const [days, setDays] = useState(null)
+
+  useEffect(() => {
+    const update = () => {
+      const diff = target.getTime() - Date.now()
+      setDays(Math.max(0, Math.ceil(diff / (1000 * 60 * 60 * 24))))
+    }
+    update()
+    const id = setInterval(update, 1000 * 60 * 60)
+    return () => clearInterval(id)
+  }, [target])
+
+  return days
+}
+
 export default function Video() {
   const [index, setIndex] = useState(null)
+  const days = useCountdown(DELIVERY_DATE)
 
   const close = () => setIndex(null)
   const prev = () => setIndex((i) => (i - 1 + PHOTOS.length) % PHOTOS.length)
@@ -42,7 +63,7 @@ export default function Video() {
   }, [index])
 
   return (
-    <section className="bg-verde-950 py-24 md:py-32">
+    <section className="bg-verde-950 py-14 md:py-20">
       <div className="max-w-5xl mx-auto px-6 md:px-10">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -57,10 +78,42 @@ export default function Video() {
           </h2>
         </motion.div>
 
+        <div className="grid sm:grid-cols-3 gap-3 mb-10">
+          <div className="border border-champagne-100/15 p-4">
+            <p className="text-[10px] tracking-[0.15em] uppercase text-dourado-light mb-2">Concluído</p>
+            <ul className="space-y-1.5">
+              {DONE.map((d) => (
+                <li key={d} className="flex items-center gap-2 text-xs text-champagne-100/75">
+                  <HiCheckCircle className="text-dourado-light text-sm shrink-0" />
+                  {d}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="border border-champagne-100/15 p-4 flex items-center gap-2">
+            <HiOutlineWrenchScrewdriver className="text-lg text-champagne-100/60 shrink-0" />
+            <div>
+              <p className="text-[10px] tracking-[0.15em] uppercase text-dourado-light mb-1">Em andamento</p>
+              <span className="text-xs text-champagne-100/75">Continuidade da obra</span>
+            </div>
+          </div>
+          <div className="bg-champagne-100/10 p-4">
+            <p className="text-[10px] tracking-[0.15em] uppercase text-dourado-light mb-1 flex items-center gap-1.5">
+              <HiOutlineCalendarDays /> Entrega prevista
+            </p>
+            <p className="font-display text-lg">Novembro de 2026</p>
+            {days !== null && (
+              <p className="text-[10px] text-champagne-100/50">
+                faltam aproximadamente <span className="text-dourado-light">{days}</span> dias
+              </p>
+            )}
+          </div>
+        </div>
+
         <p className="text-center text-xs text-champagne-100/40 mb-6 tracking-wide">
           Fotos do canteiro de obras — 10 de agosto de 2026
         </p>
-        <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 mb-16">
+        <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 mb-10">
           {PHOTOS.map((src, i) => (
             <motion.button
               key={src}
@@ -80,7 +133,7 @@ export default function Video() {
           ))}
         </div>
 
-        <div className="grid sm:grid-cols-2 gap-8 max-w-3xl mx-auto sm:max-w-none">
+        <div className="grid grid-cols-2 gap-5 max-w-xs sm:max-w-md mx-auto">
           {VIDEOS.map((video, i) => (
             <motion.div
               key={video.src}
@@ -88,7 +141,7 @@ export default function Video() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.8, delay: i * 0.1 }}
-              className="mx-auto w-full max-w-sm"
+              className="w-full"
             >
               <div className="aspect-[9/16] overflow-hidden border border-champagne-100/15 shadow-2xl shadow-black/30">
                 <iframe
@@ -100,7 +153,7 @@ export default function Video() {
                   allowFullScreen
                 />
               </div>
-              <p className="text-center text-xs text-champagne-100/50 mt-4 tracking-wide">{video.label}</p>
+              <p className="text-center text-[10px] text-champagne-100/50 mt-3 tracking-wide">{video.label}</p>
             </motion.div>
           ))}
         </div>

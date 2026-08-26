@@ -26,7 +26,7 @@ const ITEMS = [
 
 export default function BuyerSupport() {
   return (
-    <section className="bg-champagne-50 py-24 md:py-32">
+    <section className="bg-champagne-50 py-14 md:py-20">
       <div className="max-w-6xl mx-auto px-6 md:px-10">
         <div className="text-center max-w-2xl mx-auto mb-14">
           <p className="text-xs tracking-[0.25em] uppercase text-dourado mb-4">Suporte ao comprador</p>

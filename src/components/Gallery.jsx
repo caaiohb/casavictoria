@@ -35,7 +35,7 @@ export default function Gallery() {
   }, [index])
 
   return (
-    <section id="galeria" className="bg-champagne-50 py-24 md:py-32">
+    <section id="galeria" className="bg-champagne-50 py-14 md:py-20">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <div className="mb-14 flex items-end justify-between flex-wrap gap-4">
           <div>
@@ -70,16 +70,22 @@ export default function Gallery() {
           ))}
         </div>
 
-        <div className="mt-14 pt-12 border-t border-verde-900/10">
+        <div className="mt-10 pt-8 border-t border-verde-900/10">
           <p className="text-xs tracking-[0.25em] uppercase text-dourado mb-2">Material de referência</p>
-          <p className="text-sm text-tinta/50 mb-8 max-w-2xl">
-            Pranchas com múltiplos ambientes do projeto, para consulta detalhada.
+          <p className="text-sm text-tinta/50 mb-5 max-w-2xl">
+            Pranchas com múltiplos ambientes do projeto. Clique para ampliar.
           </p>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid sm:grid-cols-2 gap-4">
             {REFERENCE_SHEETS.map((sheet) => (
-              <figure key={sheet.src} className="border border-verde-900/10 bg-branco p-3">
-                <img src={sheet.src} alt={sheet.label} className="w-full h-auto" />
-              </figure>
+              <a
+                key={sheet.src}
+                href={sheet.src}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block border border-verde-900/10 bg-branco p-2 overflow-hidden"
+              >
+                <img src={sheet.src} alt={sheet.label} className="w-full h-40 object-cover object-top hover:scale-105 transition-transform duration-500" />
+              </a>
             ))}
           </div>
         </div>
